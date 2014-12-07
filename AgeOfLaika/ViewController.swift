@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var labelDogYears: UILabel!
     @IBOutlet weak var convertButton: UIButton!
+    @IBOutlet weak var convert2ndButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +26,27 @@ class ViewController: UIViewController {
 
     @IBAction func ConvertYearsPressed(sender: UIButton) {
         var inputYears = inputTextField.text.toInt()!
-        labelDogYears.text = "\(inputYears)" + " dog years convert to " + "\(inputYears*7)" + " human years"
+        labelDogYears.text = "\(inputYears)" + " human years convert to " + "\(inputYears*7)" + " dog years"
         inputTextField.hidden = true
         inputTextField.resignFirstResponder()
         convertButton.hidden = true
-        
     }
+    @IBAction func ConvertNewYearsPressed(sender: UIButton) {
+        var dogYears:Double
+        var inputYears = inputTextField.text.toInt()!
+        
+        if inputYears <= 2 {
+            dogYears = Double(inputYears) * 10.5
+        }
+        else {
+            dogYears = (2*10.5) + (Double(inputYears)-2) * 4
+        }
+        labelDogYears.text = "\(inputYears)" + " human years correspond to " + "\(dogYears)" + " dog years"
+        inputTextField.hidden = true
+        inputTextField.resignFirstResponder()
+        convert2ndButton.hidden = true
+    }
+    
 
 }
 
